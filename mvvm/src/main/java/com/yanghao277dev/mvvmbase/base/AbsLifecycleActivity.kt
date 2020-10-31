@@ -17,6 +17,8 @@ abstract class AbsLifecycleActivity<T : AbsViewModel<*>> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(initViewBinding())
 
+        initStatusBar()
+
         initViewModel()
         initView()
         dataObserver()
@@ -24,23 +26,14 @@ abstract class AbsLifecycleActivity<T : AbsViewModel<*>> : AppCompatActivity() {
 
     }
 
-     fun initViewModel() {
+     private fun initViewModel() {
         mViewModel = vmProviders(this, TUtil.getInstance(this,0)!!)
 
         mViewModel?.loadState?.observe(this, Observer {
             when (it) {
-                is LoadState.Success -> {
-                    onSuccessState(it.msg)
-                    hideProgressDialog()
-                }
-                is LoadState.Fail -> {
-                    onFailState(it.msg)
-                    hideProgressDialog()
-                }
-                is LoadState.Loading -> {
-                    onLoadingState(it.msg)
-                    showProgressDialog()
-                }
+                is LoadState.Success -> onSuccessState(it.msg)
+                is LoadState.Fail    -> onFailState(it.msg)
+                is LoadState.Loading -> onLoadingState(it.msg)
             }
         })
     }
@@ -48,6 +41,8 @@ abstract class AbsLifecycleActivity<T : AbsViewModel<*>> : AppCompatActivity() {
     private fun <T : ViewModel?> vmProviders(activity: AppCompatActivity?, modelClass: Class<T>): T {
         return ViewModelProvider(activity!!).get(modelClass)
     }
+
+    protected abstract fun initStatusBar()
 
     protected abstract fun dataObserver()
 

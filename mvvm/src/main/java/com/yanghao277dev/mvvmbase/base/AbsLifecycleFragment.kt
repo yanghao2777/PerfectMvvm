@@ -19,8 +19,6 @@ abstract class AbsLifecycleFragment<T : AbsViewModel<*>?> : Fragment() {
         return ViewModelProvider(fragment!!)[modelClass]
     }
 
-    inline fun <reified T> classOf()  = T::class.java
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initViewModel()
         MyLog.lifeStateF("CreateView",this::class.java)

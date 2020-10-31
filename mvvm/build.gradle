@@ -2,6 +2,17 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.novoda.bintray-release'
+
+publish{
+    userOrg = 'yanghao2777'
+    groupId = 'com.perfactmvvm.haohaodev'
+    artifactId = 'HaoPerfactMvvm'
+    publishVersion = '1.0.0'
+    desc = 'a perfact mvvm strcture'
+    website = 'https://github.com/yanghao2777/PerfactMvvm'
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -10,18 +21,18 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-        }
+//        release {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//
+//        }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
