@@ -19,7 +19,7 @@ dependencies {
 
 ## ProGuard
 
-###### 项目中使用了UtilCodeX，Retrofit2，Okio，Okhttp，Gson，相关混淆如下
+**Project used UtilCodeX，Retrofit2，Okio，Okhttp，Gson，And add extra rule:**
 `
 #--------------------------------------retrofit------------------------------------------#
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
@@ -75,7 +75,7 @@ dependencies {
 **0、Don't forget add network permission.(I think you will not forgot...)**
 
 `
-<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
 `
 
@@ -95,6 +95,8 @@ interface ApiService {
 }
 
 `
+
+
 **2、 Create Model or Repository for target Activity,but I recommend to use single Repository with singleton model,like this:**
 `
 class BaseRepository {
@@ -115,6 +117,7 @@ class BaseRepository {
     }
 }
 `
+
 
 **3、 Create a `ViewModel` for target Activity ,and extent `AbsViewModel<BaseRepository>`,and use `LiveData` to update view**
 `
@@ -140,7 +143,8 @@ class MainViewModel : AbsViewModel<BaseRepository>() {
 }
 `
 
-###### **4、Create a `BaseActivity` and extend AbsLifecycleActivity**
+
+**4、Create a `BaseActivity` and extend AbsLifecycleActivity**
 `
 abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleActivity<VM>(){
 
@@ -166,7 +170,8 @@ abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleAct
 }
 `
 
-###### **5、Make `MainActivity`(other activity also) extend `BaseActivity`**
+
+**5、Make `MainActivity`(other activity also) extend `BaseActivity`**
 `
 class MainActivity : BaseActivity<MainViewModel>() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -197,7 +202,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
 }
 `
 
+
 **6、Perfact!!!,you had build mvvm success**
+
 
 **For more detail,you can download the example to learn**
 
