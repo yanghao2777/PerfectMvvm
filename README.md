@@ -21,7 +21,8 @@ dependencies {
 
 **Project used UtilCodeX，Retrofit2，Okio，Okhttp，Gson，And add extra rule:**
 `
-#--------------------------------------retrofit------------------------------------------#
+#-----------retrofit-------#
+
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
 -keepclassmembers,allowshrinking,allowobfuscation interface * {
     @retrofit2.http.* <methods>;
@@ -36,9 +37,11 @@ dependencies {
 -dontwarn retrofit2.**
 -keepattributes Exceptions
 -dontwarn javax.annotation.**
-#-------------------------------------- end retrofit------------------------------------------#
 
-#-------------------------------------- okhttp okio------------------------------------------#
+#------------ end retrofit-----------#
+
+#------------ okhttp okio------------#
+
 -dontwarn org.conscrypt.**
 -dontwarn java.lang.instrument.**
 -dontwarn sun.misc.SignalHandler
@@ -52,21 +55,26 @@ dependencies {
 -keep class com.squareup.okio.**{*;}
 -keep public class org.codehaus.* { *; }
 -keep public class java.nio.* { *; }
-#-------------------------------------- end okhttp okio------------------------------------------#
 
-#---------------------------------------   util code---------------------------------------#
+#------- end okhttp okio------------------#
+
+#-----------   util code-----------#
+
 -keep public class com.blankj.utilcode.util.**  {*; }
 -keep class com.gyf.immersionbar.* {*;}
 -dontwarn com.gyf.immersionbar.**
-#-------------------------------------end  util code---------------------------------------#
 
-#--------------------------------------- gson  ---------------------------------------#
+#----------end  util code---------#
+
+#------------ gson--------------#
+
 -keep class sun.misc.Unsafe { *;}
 -keep class com.google.gson.stream.** { *;}
 -keep class * implements com.google.gson.TypeAdapterFactory
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
-#-------------------------------------end  gson---------------------------------------#
+
+#----------end  gson-----------#
 
 `
 
