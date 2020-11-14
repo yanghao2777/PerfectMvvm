@@ -5,7 +5,8 @@
 ## Download：
 
 #### Gradle:
-`
+```
+
 repositories {
     jcenter()
 }
@@ -13,13 +14,14 @@ repositories {
 dependencies {
     implementation 'com.perfactmvvm.haohaodev:HaoPerfactMvvm:1.0.0'
 }
-`
+
+```
 
 ## ProGuard
 
 **Project used UtilCodeX，Retrofit2，Okio，Okhttp，Gson，And add extra rule:**
 
-`
+```
 #-----------retrofit-------#
 
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
@@ -74,18 +76,18 @@ dependencies {
 -keep class * implements com.google.gson.JsonDeserializer
 
 #----------end  gson-----------#
-`
+```
 
 ### How to build your mvvm with PerfactMvvm
 
 **0、Don't forget add network permission.(I think you will not forgot...)**
 
-`<uses-permission android:name="android.permission.INTERNET" />`
+```<uses-permission android:name="android.permission.INTERNET" />```
 
 
 **1、 Create a interface as retrofit service**
 
-`
+```
 interface ApiService {
     companion object{
         const val BASE_URL = "your base url"
@@ -97,12 +99,12 @@ interface ApiService {
     //.....
     //other request
 }
-`
+```
 
 
 **2、 Create Model or Repository for target Activity,but I recommend to use single Repository with singleton model,like this:**
 
-`
+```
 class BaseRepository {
     private var apiService: ApiService? = null
 
@@ -120,12 +122,12 @@ class BaseRepository {
         return  apiService?.get...(format,n)
     }
 }
-`
+```
 
 
 **3、 Create a `ViewModel` for target Activity ,and extent `AbsViewModel<BaseRepository>`,and use `LiveData` to update view**
 
-`
+```
 class MainViewModel : AbsViewModel<BaseRepository>() {
     init {
         mModel = BaseRepository.INSTANCE
@@ -146,12 +148,12 @@ class MainViewModel : AbsViewModel<BaseRepository>() {
         })
     }
 }
-`
+```
 
 
 **4、Create a `BaseActivity` and extend AbsLifecycleActivity**
 
-`
+```
 abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleActivity<VM>(){
 
     override fun initStatusBar() {
@@ -174,12 +176,12 @@ abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleAct
         //dismiss dialog
     }
 }
-`
+```
 
 
 **5、Make `MainActivity`(other activity also) extend `BaseActivity`**
 
-`
+```
 class MainActivity : BaseActivity<MainViewModel>() {
     private lateinit var viewBinding: ActivityMainBinding
 
@@ -207,7 +209,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
 }
-`
+```
 
 
 **6、Perfact!!!,you had build mvvm success**
