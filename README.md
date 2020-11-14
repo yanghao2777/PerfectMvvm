@@ -231,9 +231,9 @@ HttpHelper.init(context,
             )
 ```
 
-**6、Perfect!!!,you had build mvvm success**
+**6、Perfect!!!,you had build mvvm successful.**
 
 
-**For more detail,you can download the example to learn**
+**For more detail,you can download the example to learn.**
 
 
