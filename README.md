@@ -91,7 +91,7 @@ dependencies {
 ```HttpHelper.init(context,"YOUR BASE URL")```
 
 
-**1、 Create a interface as retrofit service**
+**1、 Create an interface as retrofit service**
 
 ```
 interface ApiService {
