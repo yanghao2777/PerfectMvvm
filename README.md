@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.perfactmvvm.haohaodev:HaoPerfectMvvm:1.1.0'
+    implementation 'com.haohaodev:HaoPerfectMvvm:1.1.0'
 }
 
 ```
