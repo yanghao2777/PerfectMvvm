@@ -1,4 +1,4 @@
-# PerfactMvvm
+# PerfectMvvm
 
 
 
@@ -78,7 +78,7 @@ dependencies {
 #----------end  gson-----------#
 ```
 
-### How to build your mvvm with PerfactMvvm
+### How to build your mvvm with PerfectMvvm
 
 **0、Don't forget add network permission.(I think you will not forgot...)**
 
@@ -212,7 +212,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 ```
 
 
-**6、Perfact!!!,you had build mvvm success**
+**6、Perfect!!!,you had build mvvm success**
 
 
 **For more detail,you can download the example to learn**
