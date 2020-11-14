@@ -5,23 +5,18 @@
 ## Download：
 
 #### Gradle:
-`
-repositories {
+`repositories {
     jcenter()
 }
 
 dependencies {
     implementation 'com.perfactmvvm.haohaodev:HaoPerfactMvvm:1.0.0'
-}
-
-
-`
+}`
 
 ## ProGuard
 
 **Project used UtilCodeX，Retrofit2，Okio，Okhttp，Gson，And add extra rule:**
-`
-#-----------retrofit-------#
+`#-----------retrofit-------#
 
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
 -keepclassmembers,allowshrinking,allowobfuscation interface * {
@@ -74,23 +69,17 @@ dependencies {
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
 
-#----------end  gson-----------#
-
-`
+#----------end  gson-----------#`
 
 ### How to build your mvvm with PerfactMvvm
 
 **0、Don't forget add network permission.(I think you will not forgot...)**
 
-`
-    <uses-permission android:name="android.permission.INTERNET" />
-
-`
+`<uses-permission android:name="android.permission.INTERNET" />`
 
 
 **1、 Create a interface as retrofit service**
-`
-interface ApiService {
+`interface ApiService {
     companion object{
         const val BASE_URL = "your base url"
     }
@@ -100,14 +89,11 @@ interface ApiService {
     
     //.....
     //other request
-}
-
-`
+}`
 
 
 **2、 Create Model or Repository for target Activity,but I recommend to use single Repository with singleton model,like this:**
-`
-class BaseRepository {
+`class BaseRepository {
     private var apiService: ApiService? = null
 
     init {
@@ -123,13 +109,11 @@ class BaseRepository {
     suspend fun get...(...) : Bean? {
         return  apiService?.get...(format,n)
     }
-}
-`
+}`
 
 
 **3、 Create a `ViewModel` for target Activity ,and extent `AbsViewModel<BaseRepository>`,and use `LiveData` to update view**
-`
-class MainViewModel : AbsViewModel<BaseRepository>() {
+`class MainViewModel : AbsViewModel<BaseRepository>() {
     init {
         mModel = BaseRepository.INSTANCE
     }
@@ -148,13 +132,11 @@ class MainViewModel : AbsViewModel<BaseRepository>() {
             loadState.postValue(LoadState.Fail(it.message ?: "error"))
         })
     }
-}
-`
+}`
 
 
 **4、Create a `BaseActivity` and extend AbsLifecycleActivity**
-`
-abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleActivity<VM>(){
+`abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleActivity<VM>(){
 
     override fun initStatusBar() {
         //setup status bar
@@ -175,13 +157,11 @@ abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleAct
     override fun dismissProgressDialog() {
         //dismiss dialog
     }
-}
-`
+}`
 
 
 **5、Make `MainActivity`(other activity also) extend `BaseActivity`**
-`
-class MainActivity : BaseActivity<MainViewModel>() {
+`class MainActivity : BaseActivity<MainViewModel>() {
     private lateinit var viewBinding: ActivityMainBinding
 
     override fun dataObserver() {
@@ -207,8 +187,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         return view
     }
 
-}
-`
+}`
 
 
 **6、Perfact!!!,you had build mvvm success**
