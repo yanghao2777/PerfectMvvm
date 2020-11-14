@@ -20,7 +20,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun initClickListener() {
-
+        viewBinding.next.setOnClickListener {
+            mViewModel?.next()
+        }
+        viewBinding.pre.setOnClickListener {
+            mViewModel?.pre()
+        }
     }
 
     override fun initViewBinding(): View {

@@ -5,7 +5,7 @@ import com.gyf.immersionbar.ImmersionBar
 import com.yanghao277dev.mvvmbase.base.AbsLifecycleActivity
 import com.yanghao277dev.mvvmbase.base.AbsViewModel
 
-abstract class BaseActivity<VM : BaseViewModel> : AbsLifecycleActivity<VM>(){
+abstract class BaseActivity<VM : AbsViewModel<BaseRepository>> : AbsLifecycleActivity<VM>(){
 
     override fun initStatusBar() {
         ImmersionBar.with(this)

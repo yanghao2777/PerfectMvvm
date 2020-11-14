@@ -23,7 +23,6 @@ abstract class AbsLifecycleActivity<T : AbsViewModel<*>> : AppCompatActivity() {
         initView()
         dataObserver()
         initClickListener()
-
     }
 
      private fun initViewModel() {

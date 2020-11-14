@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MvvmExample.iml" filepath="$PROJECT_DIR$/.idea/modules/MvvmExample.iml" group="MvvmExample" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="MvvmExample/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mvvm/mvvm.iml" filepath="$PROJECT_DIR$/.idea/modules/mvvm/mvvm.iml" group="MvvmExample/mvvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MvvmExample.iml" filepath="$PROJECT_DIR$/.idea/modules/MvvmExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MvvmExample.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MvvmExample.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mvvm/MvvmExample.mvvm.iml" filepath="$PROJECT_DIR$/.idea/modules/mvvm/MvvmExample.mvvm.iml" />
     </modules>
   </component>
 </project>
