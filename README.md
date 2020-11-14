@@ -1,5 +1,11 @@
 # PerfectMvvm
 
+PerfectMvvm is a well-designed mvvm structure for Android. You can use it to build a perfect mvvm structure simple.
+
+### Lastest Version : 1.1.0
+> You can change the `BaseUrl` of Retrofit at anytime and anywhere while running,that's cool!
+##### also
+>You can custom your httplogger and set timeout for OKHttp
 
 
 ## Download：
@@ -80,9 +86,9 @@ dependencies {
 
 ### How to build your mvvm with PerfectMvvm
 
-**0、Don't forget add network permission.(I think you will not forgot...)**
+**0、Init at your `Application`**
 
-```<uses-permission android:name="android.permission.INTERNET" />```
+```HttpHelper.init(context,"YOUR BASE URL")```
 
 
 **1、 Create a interface as retrofit service**
@@ -91,11 +97,12 @@ dependencies {
 interface ApiService {
     companion object{
         const val BASE_URL = "your base url"
+        const val OTHER_BASE_URL = "other base url
     }
 
     @GET(".....")
     suspend fun get...(.....): Bean
-    
+
     //.....
     //other request
 }
@@ -211,6 +218,18 @@ class MainActivity : BaseActivity<MainViewModel>() {
 }
 ```
 
+##### **6、To change base url for retrofit,call `HttpHelper.instance.resetBaseUrlWithKey("key",ApiService.BASE_URL2)` before net request.**
+
+**7、Custom**
+
+```
+HttpHelper.init(context,
+            ApiService.BASE_URL,    //base url
+            30,                     //timeout  30s
+            HttpLogger(),           //custom httplogger
+            true                    //isLog
+            )
+```
 
 **6、Perfect!!!,you had build mvvm success**
 
