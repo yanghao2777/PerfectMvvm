@@ -1,51 +1,44 @@
 package com.yanghao277dev.mvvmbase.base
 
 import android.os.Looper
-import com.orhanobut.logger.*
 import android.os.Process
+import android.util.Log
 
 object MyLog {
-    private const val LOG_NET = false
-
-    init { onCreate() }
 
     fun <T> lifeStateA(lifeState: String, c : Class<T>) {
-        Logger.v("###ActivityLifeState(class:${c.name}):$lifeState")
+        val cName = c.name
+        Log.v("###ActivityLife",
+            "state(class:${cName.substring(cName.lastIndexOf("."))}):$lifeState")
     }
 
     fun <T> lifeStateF(lifeState: String, c : Class<T>) {
-        Logger.v("###FragmentLifeState(class:${c.name}):$lifeState")
+        val cName = c.name
+        Log.v("###FragmentLife",
+            "state(class:${cName.substring(cName.lastIndexOf("."))}):$lifeState")
     }
 
-    fun <T> debugLog(msg: String,c : Class<T>) {
-        Logger.e("###Debug(package:${c.`package`?.name ?: "unknown"}):$msg")
+
+    fun <T> debugLog(msg: String,c : Class<T>? = null) {
+        val cName = c?.name?:"."
+        Log.d("###Debug","debug(${cName.substring(cName.lastIndexOf("."))}}):$msg")
     }
 
-    fun  debugLog(msg: String) {
-        Logger.e("###Debug:$msg")
+    fun errorLog(msg: String) {
+        Log.e("###ERROR","error:$msg")
     }
 
-    fun <T> runningLog(msg: String,c : Class<T>){
-        Logger.d("###Running(package:${c.`package`?.name ?: "unknown"}):$msg")
+    fun <T> runningLog(msg: String,c : Class<T>? = null){
+        Log.d("###Running","msg(${c?.`package`?.name ?: ""}):$msg")
     }
 
     fun threadLog(tag : String){
-        Logger.e(tag + "#######threadId:" + Thread.currentThread().id.toString() +
+        Log.e("###Thread",tag + "#######threadId:" + Thread.currentThread().id.toString() +
                 "\n#####processTid:" + Process.myTid().toString() +
                 "\n###isMainThread:" + (if(Looper.getMainLooper() == Looper.myLooper()) "true" else "false"))
     }
 
     fun netState(TAG: String, requestState: String) {
-        if(LOG_NET) Logger.i("###Network(TAG:$TAG):$requestState")
-    }
-
-    private fun onCreate() {
-        val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
-            .showThreadInfo(true).tag("###").methodCount(2).build()
-        Logger.addLogAdapter(object : AndroidLogAdapter(formatStrategy) {
-            override fun isLoggable(priority: Int, tag: String?): Boolean {
-                return !BuildConfig.DEBUG
-            }
-        })
+        Log.i("##Network","net(TAG:$TAG):$requestState")
     }
 }
